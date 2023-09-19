@@ -62,6 +62,9 @@ export function renderToHtml(lines: IThemedToken[][], options: HtmlRendererOptio
             },
             line.map((token, index) => {
               const cssDeclarations = [`color: ${token.color || options.fg}`]
+              if (token.background) {
+                cssDeclarations.push(`background-color: ${token.background}`)
+              }
               if (token.fontStyle & FontStyle.Italic) {
                 cssDeclarations.push('font-style: italic')
               }

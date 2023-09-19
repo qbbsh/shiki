@@ -78,6 +78,7 @@ export interface IThemedToken {
    * 6 or 8 digit hex code representation of the token's color
    */
   color?: string
+  background?: string
   /**
    * Font style of token. Can be None/Italic/Bold/Underline
    */

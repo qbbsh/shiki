@@ -20,8 +20,14 @@ export function tokenizeAnsiWithTheme(theme: IShikiTheme, fileContents: string):
   return lines.map(line =>
     parser.parse(line).map((token): IThemedToken => {
       let color: string
+      let background: string
+
+      if (token.background) {
+        background = colorPalette.value(token.background)
+      }
       if (token.decorations.has('reverse')) {
         color = token.background ? colorPalette.value(token.background) : theme.bg
+        background = token.foreground ? colorPalette.value(token.foreground) : theme.fg
       } else {
         color = token.foreground ? colorPalette.value(token.foreground) : theme.fg
       }
@@ -29,7 +35,7 @@ export function tokenizeAnsiWithTheme(theme: IShikiTheme, fileContents: string):
       if (token.decorations.has('dim')) {
         color = dimColor(color)
       }
-
+      
       let fontStyle: FontStyle = FontStyle.None
       if (token.decorations.has('bold')) {
         fontStyle |= FontStyle.Bold
@@ -44,6 +50,7 @@ export function tokenizeAnsiWithTheme(theme: IShikiTheme, fileContents: string):
       return {
         content: token.value,
         color,
+        background,
         fontStyle
       }
     })

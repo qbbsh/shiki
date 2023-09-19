@@ -4,9 +4,10 @@
   "scripts": {
     "build": "pnpm -r build",
     "dev": "pnpm -r --parallel watch",
+    "dev:x": "pnpm -C packages/shiki --parallel watch",
+    "run:x": "esno packages/test/a.ts",
     "fmt": "prettier --write packages/**/*.ts",
     "test": "cross-env NODE_OPTIONS=--max-old-space-size=4096 jest --colors",
-    "test:e2e": "npm run test:e2e:localserver & pnpm playwright test",
     "test:e2e:localserver": "node ./scripts/e2e/local-server.mjs",
     "update": "npm run update:themes && npm run update:grammars",
     "update:themes": "bash ./scripts/pullThemes.sh",
@@ -25,7 +26,6 @@
     ]
   },
   "devDependencies": {
-    "@playwright/test": "^1.30.0",
     "@rollup/plugin-commonjs": "^24.0.0",
     "@rollup/plugin-node-resolve": "^15.0.1",
     "@rollup/plugin-replace": "^5.0.2",
