@@ -492,6 +492,18 @@
         "foreground": "#032f62",
         "fontStyle": "underline"
       }
+    },
+    {
+      "scope": ["entity", "entity.name"],
+      "settings": {
+        "foreground": "#032F62"
+      }
+    },
+    {
+      "scope": "support.function.x-cmd.synopsis",
+      "settings": {
+        "foreground": "#6c6c6c"
+      }
     }
   ]
 }
